@@ -45,20 +45,20 @@
 
 | Gitmoji | Tag        | 설명                     |
 |---------|------------|--------------------------|
-| ✨      | feat       | 새로운 기능 추가         |
+| ✨       | feat       | 새로운 기능 추가         |
 | 🐛      | fix        | 버그 수정                |
 | 📝      | docs       | 문서 추가/수정/삭제     |
-| ✅      | test       | 테스트 코드 관련         |
+| ✅       | test       | 테스트 코드 관련         |
 | 💄      | style      | 코드 포맷팅, 세미콜론 등 |
 | ♻️      | refactor   | 코드 리팩토링            |
-| ⚡      | perf       | 성능 개선                |
-| 💚      | ci         | CI 설정 변경             |
+| ⚡       | perf       | 성능 개선                |
+| 👷    | ci         | CI 설정 변경             |
 | 🚀      | chore      | 기타 변경사항            |
 | 🔥      | remove     | 코드/파일 제거           |
 
 예시:
 ```bash
-git commit -m "feat: 설문 입력 폼 UI 구현"
-git commit -m "refactor: AI 추천 알고리즘 개선"
+git commit -m "⚡️feat: 설문 입력 폼 UI 구현"
+git commit -m "♻️refactor: AI 추천 알고리즘 개선"
 
 이슈와 PR 제목도 위와 같음
