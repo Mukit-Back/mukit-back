@@ -12,6 +12,8 @@ import com.mukit.back.domain.shop.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ShopService {
@@ -25,6 +27,13 @@ public class ShopService {
 
         return ShopConverter.toShopDetailResponseDTO(shop);
     }
+
+    public List<ShopResponseDTO.ShopDetail> getShopList() {
+        return shopRepository.findAll()
+                .stream().map(ShopConverter::toShopDetailResponseDTO)
+                .toList();
+    }
+
     public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO) {
         Market market = marketRepository.findById(shopRequestDTO.marketId())
                 .orElseThrow(() -> new ShopException(ShopErrorCode.MARKET_NOT_FOUND));

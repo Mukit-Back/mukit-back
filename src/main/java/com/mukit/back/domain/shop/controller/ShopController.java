@@ -7,7 +7,9 @@ import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,5 +30,12 @@ public class ShopController {
     public CustomResponse<ShopResponseDTO.ShopDetail> getShop(@PathVariable Long shopId) {
         return CustomResponse.onSuccess(shopService.getShopDetail(shopId));
     }
+
+    @Operation(summary = "가게 목록 조회")
+    @GetMapping
+    public CustomResponse<List<ShopResponseDTO.ShopDetail>> getShops() {
+        return CustomResponse.onSuccess(shopService.getShopList());
+    }
+
 
 }
