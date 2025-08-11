@@ -1,5 +1,5 @@
 package com.mukit.back.domain.user.entity;
 
-public enum Market {
+public enum MarketType {
     TONGIN, MANGWON, NAMDAEMUN
 }

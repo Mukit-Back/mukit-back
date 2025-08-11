@@ -15,10 +15,10 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserConverter userConverter;
 
-    public UserResponseDto createUser(UserRequestDto userRequestDto) {
+    public UserResponseDto createUser(Long userId, UserRequestDto userRequestDto) {
         User user = User.builder()
-                .id(userRequestDto.getUserId())
-                .market(userRequestDto.getMarket())
+                .id(userId)
+                .marketType(userRequestDto.getMarketType())
                 .humanLevel(userRequestDto.getHumanLevel())
                 .fullLevel(userRequestDto.getFullLevel())
                 .spicyLevel(userRequestDto.getSpicyLevel())

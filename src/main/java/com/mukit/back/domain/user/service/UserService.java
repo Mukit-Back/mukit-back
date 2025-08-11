@@ -4,5 +4,5 @@ import com.mukit.back.domain.user.dto.UserRequestDto;
 import com.mukit.back.domain.user.dto.UserResponseDto;
 
 public interface UserService {
-    UserResponseDto createUser(UserRequestDto userRequestDto);
+    UserResponseDto createUser(Long userId, UserRequestDto userRequestDto);
 }

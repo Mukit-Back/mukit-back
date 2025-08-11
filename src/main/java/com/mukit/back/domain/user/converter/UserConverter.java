@@ -9,7 +9,7 @@ public class UserConverter {
     public UserResponseDto toResponseDto(User user) {
         return UserResponseDto.builder()
                 .userId(user.getId())
-                .market(user.getMarket())
+                .marketType(user.getMarketType())
                 .humanLevel(user.getHumanLevel())
                 .fullLevel(user.getFullLevel())
                 .spicyLevel(user.getSpicyLevel())

@@ -16,7 +16,7 @@ public class User {
     private Long id;
 
     @Column
-    private Market market;
+    private MarketType marketType;
     @Column
     private Integer humanLevel;
     @Column
