@@ -33,6 +33,13 @@ public class ShopController {
         return CustomResponse.onSuccess("가게 정보 수정 완료");
     }
 
+    @Operation(summary = "가게 정보 삭제")
+    @DeleteMapping("/{shopId}")
+    public CustomResponse<String> deleteShop(@PathVariable Long shopId) {
+        shopService.deleteShop(shopId);
+        return CustomResponse.onSuccess("가게 정보 삭제 완료");
+    }
+
     @Operation(summary = "가게 정보 조회")
     @GetMapping("/{shopId}")
     public CustomResponse<ShopResponseDTO.ShopDetail> getShop(@PathVariable Long shopId) {
