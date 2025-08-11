@@ -1,4 +1,33 @@
 package com.mukit.back.domain.shop.converter;
 
+import com.mukit.back.domain.market.entity.Market;
+import com.mukit.back.domain.shop.dto.request.ShopRequestDTO;
+import com.mukit.back.domain.shop.dto.response.ShopResponseDTO;
+import com.mukit.back.domain.shop.entity.Shop;
+
 public class ShopConverter {
+    public static Shop toShop(ShopRequestDTO.CreateShop dto, Market market) {
+        return Shop.builder()
+                .market(market)
+                .name(dto.name())
+                .description(dto.description())
+                .location(dto.location())
+                .holiday(dto.holiday())
+                .openTime(dto.openTime())
+                .breakStart(dto.breakStart())
+                .breakEnd(dto.breakEnd())
+                .closeTime(dto.closeTime())
+                .humanLevel(dto.humanLevel())
+                .xPos(dto.xPos())
+                .yPos(dto.yPos())
+                .category(dto.category())
+                .imageUrl(dto.imageUrl())
+                .build();
+    }
+
+    public static ShopResponseDTO.CreateShop toCreateShopResponse(Shop shop) {
+        return ShopResponseDTO.CreateShop.builder()
+                .shopId(shop.getShopId())
+                .build();
+    }
 }
