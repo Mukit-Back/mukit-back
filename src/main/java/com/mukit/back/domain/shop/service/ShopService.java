@@ -44,4 +44,14 @@ public class ShopService {
         return ShopConverter.toCreateShopResponse(shop);
     }
 
+    public void updateShop(Long shopId, ShopRequestDTO.UpdateShop dto) {
+        Shop shop = shopRepository.findById(shopId)
+                .orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
+
+        shop.update(dto.name(), dto.description(), dto.holiday(),
+                dto.openTime(), dto.breakStart(), dto.breakEnd(), dto.closeTime(),
+                dto.humanLevel(), dto.xPos(), dto.yPos(),
+                dto.category(), dto.imageUrl(), dto.location());
+    }
+
 }

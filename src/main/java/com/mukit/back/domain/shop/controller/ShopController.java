@@ -25,6 +25,14 @@ public class ShopController {
             @RequestBody ShopRequestDTO.CreateShop shopRequestDTO) {
         return CustomResponse.onSuccess(shopService.createShop(shopRequestDTO));
     }
+
+    @Operation(summary = "가게 정보 수정")
+    @PatchMapping("/{shopId}")
+    public CustomResponse<String> updateShop(@PathVariable Long shopId, @RequestBody ShopRequestDTO.UpdateShop shopRequestDTO) {
+        shopService.updateShop(shopId, shopRequestDTO);
+        return CustomResponse.onSuccess("가게 정보 수정 완료");
+    }
+
     @Operation(summary = "가게 정보 조회")
     @GetMapping("/{shopId}")
     public CustomResponse<ShopResponseDTO.ShopDetail> getShop(@PathVariable Long shopId) {

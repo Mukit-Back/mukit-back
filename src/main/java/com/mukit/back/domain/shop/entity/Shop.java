@@ -65,6 +65,26 @@ public class Shop extends BaseEntity {
 
     @OneToMany(mappedBy = "shop")
     private List<Menu> menus = new ArrayList<>();
+
+
+    public void update(String name, String description, Holiday holiday,
+                       LocalTime openTime, LocalTime breakStart, LocalTime breakEnd, LocalTime closeTime,
+                       HumanLevel humanLevel, Double xPos, Double yPos,
+                       Category category, String imageUrl, String location) {
+        if (name != null) this.name = name;
+        if (description != null) this.description = description;
+        if (holiday != null) this.holiday = holiday;
+        if (openTime != null) this.openTime = openTime;
+        if (breakStart != null) this.breakStart = breakStart;
+        if (breakEnd != null) this.breakEnd = breakEnd;
+        if (closeTime != null) this.closeTime = closeTime;
+        if (humanLevel != null) this.humanLevel = humanLevel;
+        if (xPos != null) this.xPos = xPos;
+        if (yPos != null) this.yPos = yPos;
+        if (category != null) this.category = category;
+        if (imageUrl != null) this.imageUrl = imageUrl;
+        if (location != null) this.location = location;
+    }
 }
 
 

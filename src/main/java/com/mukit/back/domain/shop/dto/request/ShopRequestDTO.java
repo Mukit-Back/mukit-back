@@ -28,4 +28,35 @@ public class ShopRequestDTO {
             @Size(max = 100) String location
     ) {
     }
+
+    @Builder
+    public record UpdateShop(
+            @Size(min = 1, max = 120)
+            String name,
+            @Size(max = 255)
+            String description,
+
+            Holiday holiday,
+
+            LocalTime openTime,
+            LocalTime breakStart,
+            LocalTime breakEnd,
+            LocalTime closeTime,
+
+            HumanLevel humanLevel,
+
+            @DecimalMin(value = "-180") @DecimalMax(value = "180")
+            Double xPos,
+            @DecimalMin(value = "-90")  @DecimalMax(value = "90")
+            Double yPos,
+
+            Category category,
+
+            @Size(max = 255)
+            String imageUrl,
+
+            @Size(max = 100)
+            String location
+    ) {
+    }
 }
