@@ -4,8 +4,11 @@ import com.mukit.back.domain.user.converter.UserConverter;
 import com.mukit.back.domain.user.dto.UserRequestDto;
 import com.mukit.back.domain.user.dto.UserResponseDto;
 import com.mukit.back.domain.user.entity.User;
+import com.mukit.back.domain.user.exception.UserErrorCode;
 import com.mukit.back.domain.user.repository.UserRepository;
+import com.mukit.back.global.apiPayload.exception.CustomException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 
@@ -26,5 +29,12 @@ public class UserServiceImpl implements UserService {
 
         User saved = userRepository.save(user);
         return userConverter.toResponseDto(saved);
+    }
+
+    public UserResponseDto getUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new CustomException(UserErrorCode.USER_NOT_FOUND));
+
+        return userConverter.toResponseDto(user);
     }
 }

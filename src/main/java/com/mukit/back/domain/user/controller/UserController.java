@@ -26,4 +26,14 @@ public class UserController {
         UserResponseDto response = userService.createUser(userId, userRequestDto);
         return ResponseEntity.ok(CustomResponse.onSuccess(response));
     }
+
+    // 유저 조회
+    @Operation(summary = "유저 조회", description = "유저를 조회합니다.")
+    @GetMapping("/{userId}")
+    public ResponseEntity<CustomResponse<UserResponseDto>> getUser(
+            @PathVariable Long userId
+    ) {
+        UserResponseDto response = userService.getUser(userId);
+        return ResponseEntity.ok(CustomResponse.onSuccess(response));
+    }
 }
