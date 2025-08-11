@@ -6,6 +6,23 @@ import com.mukit.back.domain.shop.dto.response.ShopResponseDTO;
 import com.mukit.back.domain.shop.entity.Shop;
 
 public class ShopConverter {
+
+    public static ShopResponseDTO.ShopDetail toShopDetailResponseDTO(Shop shop) {
+        return ShopResponseDTO.ShopDetail.builder()
+                .name(shop.getName())
+                .description(shop.getDescription())
+                .holiday(shop.getHoliday())
+                .openTime(shop.getOpenTime())
+                .breakStart(shop.getBreakStart())
+                .breakEnd(shop.getBreakEnd())
+                .humanLevel(shop.getHumanLevel())
+                .xPos(shop.getXPos())
+                .yPos(shop.getYPos())
+                .category(shop.getCategory())
+                .imageUrl(shop.getImageUrl())
+                .build();
+    }
+
     public static Shop toShop(ShopRequestDTO.CreateShop dto, Market market) {
         return Shop.builder()
                 .market(market)

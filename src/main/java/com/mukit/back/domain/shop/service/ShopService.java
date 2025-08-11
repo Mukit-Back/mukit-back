@@ -18,6 +18,13 @@ public class ShopService {
 
     private final ShopRepository shopRepository;
     private final MarketRepository marketRepository;
+
+    public ShopResponseDTO.ShopDetail getShopDetail(Long shopId) {
+        Shop shop = shopRepository.findById(shopId)
+                .orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
+
+        return ShopConverter.toShopDetailResponseDTO(shop);
+    }
     public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO) {
         Market market = marketRepository.findById(shopRequestDTO.marketId())
                 .orElseThrow(() -> new ShopException(ShopErrorCode.MARKET_NOT_FOUND));
