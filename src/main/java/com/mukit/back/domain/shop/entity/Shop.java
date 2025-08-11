@@ -1,5 +1,8 @@
-package com.mukit.back.domain.market.entity;
+package com.mukit.back.domain.shop.entity;
 
+import com.mukit.back.domain.market.entity.Course;
+import com.mukit.back.domain.market.entity.Market;
+import com.mukit.back.domain.market.entity.Menu;
 import com.mukit.back.domain.market.entity.enums.Category;
 import com.mukit.back.domain.market.entity.enums.Holiday;
 import com.mukit.back.domain.market.entity.enums.HumanLevel;
@@ -63,4 +66,5 @@ public class Shop extends BaseEntity {
     @OneToMany(mappedBy = "shop")
     private List<Menu> menus = new ArrayList<>();
 }
+
 
