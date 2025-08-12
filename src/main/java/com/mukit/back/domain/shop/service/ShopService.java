@@ -11,11 +11,13 @@ import com.mukit.back.domain.shop.exception.ShopException;
 import com.mukit.back.domain.shop.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ShopService {
 
     private final ShopRepository shopRepository;
@@ -34,6 +36,7 @@ public class ShopService {
                 .toList();
     }
 
+    @Transactional
     public void deleteShop(Long shopId) {
         Shop shop = shopRepository.findById(shopId)
                 .orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
@@ -41,6 +44,7 @@ public class ShopService {
         shopRepository.delete(shop);
     }
 
+    @Transactional
     public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO) {
         Market market = marketRepository.findById(shopRequestDTO.marketId())
                 .orElseThrow(() -> new ShopException(ShopErrorCode.MARKET_NOT_FOUND));
@@ -51,6 +55,7 @@ public class ShopService {
         return ShopConverter.toCreateShopResponse(shop);
     }
 
+    @Transactional
     public void updateShop(Long shopId, ShopRequestDTO.UpdateShop dto) {
         Shop shop = shopRepository.findById(shopId)
                 .orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
