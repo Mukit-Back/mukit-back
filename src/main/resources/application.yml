@@ -17,3 +17,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+# S3
+cloud:
+  aws:
+    s3:
+      bucket: mukit-s3
+    credentials:
+      access-key: ${S3_ACCESS_KEY}
+      secret-key: ${S3_SECRET_KEY}
+    region:
+      static: ${REGION}
+      auto: false
+    stack:
+      auto: false

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MenuConverter {
 
-    public static Menu toMenu(MenuRequestDTO.CreateMenu createMenu, Shop shop) {
+    public static Menu toMenu(MenuRequestDTO.CreateMenu createMenu, Shop shop, String menuImageUrl) {
         return Menu.builder()
                 .name(createMenu.name())
                 .description(createMenu.description())
@@ -18,6 +18,7 @@ public class MenuConverter {
                 .price(createMenu.price())
                 .spicyLevel(createMenu.spicyLevel())
                 .shop(shop)
+                .menuImageUrl(menuImageUrl)
                 .build();
     }
 
@@ -52,6 +53,7 @@ public class MenuConverter {
                 .name(menu.getName())
                 .description(menu.getDescription())
                 .price(menu.getPrice())
+                .ImageUrl(menu.getMenuImageUrl())
                 .build();
     }
 

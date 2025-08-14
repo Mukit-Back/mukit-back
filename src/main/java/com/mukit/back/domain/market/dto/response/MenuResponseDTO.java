@@ -33,6 +33,7 @@ public class MenuResponseDTO {
             Long menuId,
             String name,
             Integer price,
-            String description
+            String description,
+            String ImageUrl
     ) {}
 }

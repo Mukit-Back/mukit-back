@@ -35,11 +35,13 @@ public class Menu extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private FullLevel fullLevel;
 
+    private String menuImageUrl;
+
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
 
-    public void update(MenuRequestDTO.UpdateMenu updateMenu) {
+    public void update(MenuRequestDTO.UpdateMenu updateMenu, String menuImageUrl) {
         if (updateMenu.name() != null) {
             this.name = updateMenu.name();
         }
@@ -54,6 +56,9 @@ public class Menu extends BaseEntity {
         }
         if (updateMenu.fullLevel() != null) {
             this.fullLevel = updateMenu.fullLevel();
+        }
+        if (menuImageUrl != null) {
+            this.menuImageUrl = menuImageUrl;
         }
     }
 
