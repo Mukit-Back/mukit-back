@@ -30,7 +30,11 @@ public class MenuService {
     public MenuResponseDTO.CreateMenu createMenu(Long shopId, MenuRequestDTO.CreateMenu createMenu, MultipartFile menuImage) {
         Shop shop = shopRepository.findById(shopId).orElseThrow(()-> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
 
-        String menuImageUrl = amazonS3Manager.uploadMenuImage(menuImage);
+        String menuImageUrl = null;
+        if (menuImage != null) {
+            menuImageUrl = amazonS3Manager.uploadMenuImage(menuImage);
+        }
+
 
         Menu menu = MenuConverter.toMenu(createMenu, shop, menuImageUrl);
 
@@ -42,7 +46,10 @@ public class MenuService {
     public MenuResponseDTO.UpdateMenu updateMenu(Long menuId, MenuRequestDTO.UpdateMenu updateMenu, MultipartFile menuImage) {
         Menu menu = menuRepository.findById(menuId).orElseThrow(()-> new MenuException(ShopErrorCode.SHOP_NOT_FOUND));
 
-        String menuImageUrl = amazonS3Manager.uploadMenuImage(menuImage);
+        String menuImageUrl = null;
+        if (menuImage != null) {
+            menuImageUrl = amazonS3Manager.uploadMenuImage(menuImage);
+        }
 
         menu.update(updateMenu, menuImageUrl);
 

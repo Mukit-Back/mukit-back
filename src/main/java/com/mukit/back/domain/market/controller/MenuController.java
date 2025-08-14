@@ -7,6 +7,8 @@ import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,19 @@ public class MenuController {
 
     @Operation(summary = "메뉴 정보 추가")
     @PostMapping(value = "/shops/{shopId}/menus", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
+            @ApiResponse(responseCode = "400",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 길이가 1에서 100 사이여야 합니다
+                            """),
+            @ApiResponse(responseCode = "404",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 메뉴를 찾을 수 없습니다.
+                            """),
+    })
     public CustomResponse<MenuResponseDTO.CreateMenu> createMenu(
             @PathVariable Long shopId,
             @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
@@ -35,6 +50,19 @@ public class MenuController {
 
     @Operation(summary = "메뉴 정보 수정")
     @PatchMapping(value = "/menus/{menuId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
+            @ApiResponse(responseCode = "400",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 길이가 1에서 100 사이여야 합니다
+                            """),
+            @ApiResponse(responseCode = "404",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 메뉴를 찾을 수 없습니다.
+                            """),
+    })
     public CustomResponse<MenuResponseDTO.UpdateMenu> updateMenu(
             @PathVariable Long menuId,
             @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
@@ -44,7 +72,14 @@ public class MenuController {
         return CustomResponse.onSuccess(menuService.updateMenu(menuId, updateMenu, menuImage));
     }
 
-    @Operation(summary = "가게 정보 삭제")
+    @Operation(summary = "가게 정보 삭제")@ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
+            @ApiResponse(responseCode = "404",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 가게를 찾을 수 없습니다.
+                            """),
+    })
     @DeleteMapping("/menus/{menuId}")
     public CustomResponse<String> deleteMenu(
             @PathVariable Long menuId
@@ -55,6 +90,14 @@ public class MenuController {
 
     @Operation(summary = "가게 정보 리스트 조회")
     @GetMapping("/shops/{shopId}/menus")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
+            @ApiResponse(responseCode = "404",
+                    description = """
+                            다음과 같은 이유로 실패할 수 있습니다:
+                            - 가게를 찾을 수 없습니다.
+                            """),
+    })
     public CustomResponse<MenuResponseDTO.MenuList> getMenus(
             @PathVariable Long shopId
     ) {
