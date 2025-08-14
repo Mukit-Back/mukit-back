@@ -6,6 +6,7 @@ import com.mukit.back.domain.market.service.MenuService;
 import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class MenuController {
     public CustomResponse<MenuResponseDTO.CreateMenu> createMenu(
             @PathVariable Long shopId,
             @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
-            @RequestPart("request") MenuRequestDTO.CreateMenu createMenu,
+            @RequestPart("request") @Valid MenuRequestDTO.CreateMenu createMenu,
             @RequestPart("menuImage") MultipartFile menuImage
     ) {
         return CustomResponse.onSuccess(menuService.createMenu(shopId, createMenu, menuImage));
@@ -32,7 +33,7 @@ public class MenuController {
     public CustomResponse<MenuResponseDTO.UpdateMenu> updateMenu(
             @PathVariable Long menuId,
             @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
-            @RequestPart("request") MenuRequestDTO.UpdateMenu updateMenu,
+            @RequestPart("request") @Valid MenuRequestDTO.UpdateMenu updateMenu,
             @RequestPart("menuImage") MultipartFile menuImage
     ) {
         return CustomResponse.onSuccess(menuService.updateMenu(menuId, updateMenu, menuImage));

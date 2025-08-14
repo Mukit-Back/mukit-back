@@ -25,8 +25,12 @@ public class Menu extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuId;
 
+    @Column(name = "name", length = 100)
     private String name;
+    
     private Integer price;
+
+    @Column(name = "description", length = 2000)
     private String description;
 
     @Enumerated(EnumType.STRING)
