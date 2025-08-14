@@ -1,6 +1,9 @@
 package com.mukit.back.domain.user.dto;
 
+import com.mukit.back.domain.user.entity.FullLevel;
+import com.mukit.back.domain.user.entity.HumanLevel;
 import com.mukit.back.domain.user.entity.MarketType;
+import com.mukit.back.domain.user.entity.SpicyLevel;
 import lombok.*;
 
 @Getter
@@ -9,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class UserRequestDto {
     private MarketType marketType;
-    private Integer humanLevel;
-    private Integer spicyLevel;
-    private Integer fullLevel;
+    private HumanLevel humanLevel;
+    private SpicyLevel spicyLevel;
+    private FullLevel fullLevel;
 }

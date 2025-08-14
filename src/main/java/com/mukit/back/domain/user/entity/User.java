@@ -18,9 +18,9 @@ public class User {
     @Column
     private MarketType marketType;
     @Column
-    private Integer humanLevel;
+    private HumanLevel humanLevel;
     @Column
-    private Integer spicyLevel;
+    private SpicyLevel spicyLevel;
     @Column
-    private Integer fullLevel;
+    private FullLevel fullLevel;
 }
