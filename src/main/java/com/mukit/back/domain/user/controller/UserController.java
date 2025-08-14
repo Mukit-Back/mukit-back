@@ -18,12 +18,11 @@ public class UserController {
 
     // 일단은 pk로
     @Operation(summary = "유저 생성", description = "유저를 생성합니다.")
-    @PostMapping("/{userId}")
+    @PostMapping
     public ResponseEntity<CustomResponse<UserResponseDto>> createUser(
-            @PathVariable Long userId,
             @RequestBody UserRequestDto userRequestDto
     ) {
-        UserResponseDto response = userService.createUser(userId, userRequestDto);
+        UserResponseDto response = userService.createUser(userRequestDto);
         return ResponseEntity.ok(CustomResponse.onSuccess(response));
     }
 
