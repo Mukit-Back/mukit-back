@@ -1,8 +1,8 @@
-package com.mukit.back.domain.shop.controller;
+package com.mukit.back.domain.market.controller;
 
-import com.mukit.back.domain.shop.dto.request.ShopRequestDTO;
-import com.mukit.back.domain.shop.dto.response.ShopResponseDTO;
-import com.mukit.back.domain.shop.service.ShopService;
+import com.mukit.back.domain.market.dto.request.ShopRequestDTO;
+import com.mukit.back.domain.market.dto.response.ShopResponseDTO;
+import com.mukit.back.domain.market.service.ShopService;
 import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

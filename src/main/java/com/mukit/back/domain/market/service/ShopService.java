@@ -1,14 +1,14 @@
-package com.mukit.back.domain.shop.service;
+package com.mukit.back.domain.market.service;
 
 import com.mukit.back.domain.market.entity.Market;
 import com.mukit.back.domain.market.repository.MarketRepository;
-import com.mukit.back.domain.shop.converter.ShopConverter;
-import com.mukit.back.domain.shop.dto.request.ShopRequestDTO;
-import com.mukit.back.domain.shop.dto.response.ShopResponseDTO;
-import com.mukit.back.domain.shop.entity.Shop;
-import com.mukit.back.domain.shop.exception.ShopErrorCode;
-import com.mukit.back.domain.shop.exception.ShopException;
-import com.mukit.back.domain.shop.repository.ShopRepository;
+import com.mukit.back.domain.market.converter.ShopConverter;
+import com.mukit.back.domain.market.dto.request.ShopRequestDTO;
+import com.mukit.back.domain.market.dto.response.ShopResponseDTO;
+import com.mukit.back.domain.market.entity.Shop;
+import com.mukit.back.global.apiPayload.code.ShopErrorCode;
+import com.mukit.back.global.apiPayload.exception.ShopException;
+import com.mukit.back.domain.market.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

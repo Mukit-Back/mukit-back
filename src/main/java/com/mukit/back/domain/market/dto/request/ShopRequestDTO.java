@@ -1,4 +1,4 @@
-package com.mukit.back.domain.shop.dto.request;
+package com.mukit.back.domain.market.dto.request;
 
 import com.mukit.back.domain.market.entity.enums.Category;
 import com.mukit.back.domain.market.entity.enums.Holiday;

@@ -1,6 +1,5 @@
-package com.mukit.back.domain.shop.exception;
+package com.mukit.back.global.apiPayload.code;
 
-import com.mukit.back.global.apiPayload.code.BaseErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

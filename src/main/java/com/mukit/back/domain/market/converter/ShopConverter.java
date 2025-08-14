@@ -1,9 +1,9 @@
-package com.mukit.back.domain.shop.converter;
+package com.mukit.back.domain.market.converter;
 
 import com.mukit.back.domain.market.entity.Market;
-import com.mukit.back.domain.shop.dto.request.ShopRequestDTO;
-import com.mukit.back.domain.shop.dto.response.ShopResponseDTO;
-import com.mukit.back.domain.shop.entity.Shop;
+import com.mukit.back.domain.market.dto.request.ShopRequestDTO;
+import com.mukit.back.domain.market.dto.response.ShopResponseDTO;
+import com.mukit.back.domain.market.entity.Shop;
 
 public class ShopConverter {
 

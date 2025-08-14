@@ -2,7 +2,6 @@ package com.mukit.back.domain.market.entity;
 
 import com.mukit.back.domain.market.entity.enums.FullLevel;
 import com.mukit.back.domain.market.entity.enums.SpicyLevel;
-import com.mukit.back.domain.shop.entity.Shop;
 import com.mukit.back.global.apiPayload.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

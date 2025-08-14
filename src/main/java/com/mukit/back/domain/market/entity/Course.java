@@ -1,6 +1,5 @@
 package com.mukit.back.domain.market.entity;
 
-import com.mukit.back.domain.shop.entity.Shop;
 import com.mukit.back.domain.user.entity.User;
 import com.mukit.back.global.apiPayload.BaseEntity;
 import jakarta.persistence.*;
