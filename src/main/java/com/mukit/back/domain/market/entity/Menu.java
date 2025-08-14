@@ -1,5 +1,6 @@
 package com.mukit.back.domain.market.entity;
 
+import com.mukit.back.domain.market.dto.request.MenuRequestDTO;
 import com.mukit.back.domain.market.entity.enums.FullLevel;
 import com.mukit.back.domain.market.entity.enums.SpicyLevel;
 import com.mukit.back.global.apiPayload.BaseEntity;
@@ -24,8 +25,12 @@ public class Menu extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuId;
 
+    @Column(name = "name", length = 100)
     private String name;
+    
     private Integer price;
+
+    @Column(name = "description", length = 2000)
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -34,8 +39,32 @@ public class Menu extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private FullLevel fullLevel;
 
+    private String menuImageUrl;
+
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
+
+    public void update(MenuRequestDTO.UpdateMenu updateMenu, String menuImageUrl) {
+        if (updateMenu.name() != null) {
+            this.name = updateMenu.name();
+        }
+        if (updateMenu.price() != null) {
+            this.price = updateMenu.price();
+        }
+        if (updateMenu.description() != null) {
+            this.description = updateMenu.description();
+        }
+        if (updateMenu.spicyLevel() != null) {
+            this.spicyLevel = updateMenu.spicyLevel();
+        }
+        if (updateMenu.fullLevel() != null) {
+            this.fullLevel = updateMenu.fullLevel();
+        }
+        if (menuImageUrl != null) {
+            this.menuImageUrl = menuImageUrl;
+        }
+    }
+
 }
 
