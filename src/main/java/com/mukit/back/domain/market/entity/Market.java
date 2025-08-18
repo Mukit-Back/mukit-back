@@ -1,5 +1,6 @@
 package com.mukit.back.domain.market.entity;
 
+import com.mukit.back.domain.market.entity.enums.MarketType;
 import com.mukit.back.global.apiPayload.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,4 +30,7 @@ public class Market extends BaseEntity {
 
     @OneToMany(mappedBy = "market")
     private List<Shop> shops = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private MarketType marketType;
 }
