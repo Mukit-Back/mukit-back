@@ -30,6 +30,13 @@ public class ShopService {
         return ShopConverter.toShopDetailResponseDTO(shop);
     }
 
+    public ShopResponseDTO.ShopDetail getShopDetailByName(String shopName) {
+        Shop shop = shopRepository.findByName(shopName)
+                .orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
+
+        return ShopConverter.toShopDetailResponseDTO(shop);
+    }
+
     public List<ShopResponseDTO.ShopDetail> getShopList() {
         return shopRepository.findAll()
                 .stream().map(ShopConverter::toShopDetailResponseDTO)
