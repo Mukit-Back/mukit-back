@@ -46,6 +46,12 @@ public class ShopController {
         return CustomResponse.onSuccess(shopService.getShopDetail(shopId));
     }
 
+    @Operation(summary = "가게 정보 조회 (가게 이름 기반)")
+    @GetMapping("/shop-name")
+    public CustomResponse<ShopResponseDTO.ShopDetail> getShop(@RequestParam String shopName) {
+        return CustomResponse.onSuccess(shopService.getShopDetailByName(shopName));
+    }
+
     @Operation(summary = "가게 목록 조회")
     @GetMapping
     public CustomResponse<List<ShopResponseDTO.ShopDetail>> getShops() {

@@ -21,6 +21,7 @@ public class ShopConverter {
                 .yPos(shop.getYPos())
                 .category(shop.getCategory())
                 .imageUrl(shop.getImageUrl())
+                .note(shop.getNote())
                 .build();
     }
 
@@ -40,6 +41,7 @@ public class ShopConverter {
                 .yPos(dto.yPos())
                 .category(dto.category())
                 .imageUrl(dto.imageUrl())
+                .note(dto.note())
                 .build();
     }
 
