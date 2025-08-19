@@ -70,7 +70,7 @@ public class ShopService {
         shop.update(dto.name(), dto.description(), dto.holidays(),
                 dto.openTime(), dto.breakStart(), dto.breakEnd(), dto.closeTime(),
                 dto.humanLevel(), dto.xPos(), dto.yPos(),
-                dto.category(), dto.imageUrl(), dto.location(), dto.note());
+                dto.category(), dto.imageUrl(), dto.location(), dto.phone(), dto.note());
     }
 
 }

@@ -28,6 +28,7 @@ public class ShopRequestDTO {
             Category category,
             @Size(max = 255) String imageUrl,
             @Size(max = 100) String location,
+            String phone,
             String note
     ) {
     }
@@ -60,6 +61,7 @@ public class ShopRequestDTO {
 
             @Size(max = 100)
             String location,
+            String phone,
 
             String note
     ) {

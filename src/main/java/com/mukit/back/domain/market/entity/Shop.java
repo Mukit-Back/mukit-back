@@ -52,6 +52,8 @@ public class Shop extends BaseEntity {
 
     private String imageUrl;
 
+    private String phone;
+
     // 비고
     private String note;
 
@@ -70,7 +72,7 @@ public class Shop extends BaseEntity {
     public void update(String name, String description, List<String> holidays,
                        LocalTime openTime, LocalTime breakStart, LocalTime breakEnd, LocalTime closeTime,
                        HumanLevel humanLevel, Double xPos, Double yPos,
-                       Category category, String imageUrl, String location, String note) {
+                       Category category, String imageUrl, String location, String phone, String note) {
         if (name != null) this.name = name;
         if (description != null) this.description = description;
         if (holidays != null) this.holidays = holidays;
@@ -84,6 +86,7 @@ public class Shop extends BaseEntity {
         if (category != null) this.category = category;
         if (imageUrl != null) this.imageUrl = imageUrl;
         if (location != null) this.location = location;
+        if (phone != null) this.phone = phone;
         if (note != null) this.note = note;
     }
 }
