@@ -41,6 +41,8 @@ public class Menu extends BaseEntity {
 
     private String menuImageUrl;
 
+    private String note;
+
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
