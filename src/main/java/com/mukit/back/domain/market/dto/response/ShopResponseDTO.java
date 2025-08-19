@@ -12,6 +12,7 @@ public class ShopResponseDTO {
 
     @Builder
     public record ShopDetail(
+            Long shopId,
             String name,
             String description,
             List<String> holidays,
@@ -24,6 +25,7 @@ public class ShopResponseDTO {
             Double yPos,
             Category category,
             String imageUrl,
+            String phone,
             String note
     ) {
     }

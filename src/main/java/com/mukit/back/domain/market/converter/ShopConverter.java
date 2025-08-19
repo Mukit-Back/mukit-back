@@ -9,6 +9,7 @@ public class ShopConverter {
 
     public static ShopResponseDTO.ShopDetail toShopDetailResponseDTO(Shop shop) {
         return ShopResponseDTO.ShopDetail.builder()
+                .shopId(shop.getShopId())
                 .name(shop.getName())
                 .description(shop.getDescription())
                 .holidays(shop.getHolidays())
@@ -21,6 +22,7 @@ public class ShopConverter {
                 .yPos(shop.getYPos())
                 .category(shop.getCategory())
                 .imageUrl(shop.getImageUrl())
+                .phone(shop.getPhone())
                 .note(shop.getNote())
                 .build();
     }
@@ -41,6 +43,7 @@ public class ShopConverter {
                 .yPos(dto.yPos())
                 .category(dto.category())
                 .imageUrl(dto.imageUrl())
+                .phone(dto.phone())
                 .note(dto.note())
                 .build();
     }
