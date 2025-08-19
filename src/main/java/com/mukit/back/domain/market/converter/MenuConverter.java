@@ -19,6 +19,7 @@ public class MenuConverter {
                 .spicyLevel(createMenu.spicyLevel())
                 .shop(shop)
                 .menuImageUrl(menuImageUrl)
+                .note(createMenu.note())
                 .build();
     }
 
@@ -54,6 +55,7 @@ public class MenuConverter {
                 .description(menu.getDescription())
                 .price(menu.getPrice())
                 .ImageUrl(menu.getMenuImageUrl())
+                .note(menu.getNote())
                 .build();
     }
 

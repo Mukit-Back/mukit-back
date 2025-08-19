@@ -34,6 +34,7 @@ public class MenuResponseDTO {
             String name,
             Integer price,
             String description,
-            String ImageUrl
+            String ImageUrl,
+            String note
     ) {}
 }

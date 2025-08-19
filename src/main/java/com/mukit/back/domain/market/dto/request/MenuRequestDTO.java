@@ -15,7 +15,8 @@ public class MenuRequestDTO {
         @Length(min = 1, max = 2000)
         String description,
         SpicyLevel spicyLevel,
-        FullLevel fullLevel
+        FullLevel fullLevel,
+        String note
     ) {}
 
     @Builder
