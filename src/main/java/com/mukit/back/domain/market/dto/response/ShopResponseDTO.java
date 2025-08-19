@@ -6,6 +6,7 @@ import com.mukit.back.domain.market.entity.enums.HumanLevel;
 import lombok.Builder;
 
 import java.time.LocalTime;
+import java.util.List;
 
 public class ShopResponseDTO {
 
@@ -13,7 +14,7 @@ public class ShopResponseDTO {
     public record ShopDetail(
             String name,
             String description,
-            Holiday holiday,
+            List<String> holidays,
             LocalTime openTime,
             LocalTime breakStart,
             LocalTime breakEnd,
@@ -22,7 +23,8 @@ public class ShopResponseDTO {
             Double xPos,
             Double yPos,
             Category category,
-            String imageUrl
+            String imageUrl,
+            String note
     ) {
     }
 

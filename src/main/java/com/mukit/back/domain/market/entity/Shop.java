@@ -33,8 +33,8 @@ public class Shop extends BaseEntity {
     private String name;
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private Holiday holiday;
+    // Enum 을 사용하지 않음.. List로
+    private List<String> holidays = new ArrayList<>();
 
     private LocalTime openTime;
     private LocalTime breakStart;
@@ -52,6 +52,9 @@ public class Shop extends BaseEntity {
 
     private String imageUrl;
 
+    // 비고
+    private String note;
+
     @ManyToOne
     @JoinColumn(name = "market_id")
     private Market market;
@@ -64,13 +67,13 @@ public class Shop extends BaseEntity {
     private List<Menu> menus = new ArrayList<>();
 
 
-    public void update(String name, String description, Holiday holiday,
+    public void update(String name, String description, List<String> holidays,
                        LocalTime openTime, LocalTime breakStart, LocalTime breakEnd, LocalTime closeTime,
                        HumanLevel humanLevel, Double xPos, Double yPos,
-                       Category category, String imageUrl, String location) {
+                       Category category, String imageUrl, String location, String note) {
         if (name != null) this.name = name;
         if (description != null) this.description = description;
-        if (holiday != null) this.holiday = holiday;
+        if (holidays != null) this.holidays = holidays;
         if (openTime != null) this.openTime = openTime;
         if (breakStart != null) this.breakStart = breakStart;
         if (breakEnd != null) this.breakEnd = breakEnd;
@@ -81,6 +84,7 @@ public class Shop extends BaseEntity {
         if (category != null) this.category = category;
         if (imageUrl != null) this.imageUrl = imageUrl;
         if (location != null) this.location = location;
+        if (note != null) this.note = note;
     }
 }
 
