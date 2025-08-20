@@ -12,6 +12,7 @@ public class ShopConverter {
                 .shopId(shop.getShopId())
                 .name(shop.getName())
                 .description(shop.getDescription())
+                .location(shop.getLocation())
                 .holidays(shop.getHolidays())
                 .openTime(shop.getOpenTime())
                 .breakStart(shop.getBreakStart())

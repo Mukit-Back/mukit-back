@@ -1,7 +1,6 @@
 package com.mukit.back.domain.market.dto.response;
 
 import com.mukit.back.domain.market.entity.enums.Category;
-import com.mukit.back.domain.market.entity.enums.Holiday;
 import com.mukit.back.domain.market.entity.enums.HumanLevel;
 import lombok.Builder;
 
@@ -15,6 +14,7 @@ public class ShopResponseDTO {
             Long shopId,
             String name,
             String description,
+            String location,
             List<String> holidays,
             LocalTime openTime,
             LocalTime breakStart,
