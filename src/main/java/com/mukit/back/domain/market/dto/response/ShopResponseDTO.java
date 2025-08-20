@@ -15,6 +15,7 @@ public class ShopResponseDTO {
             Long shopId,
             String name,
             String description,
+            String location,
             List<String> holidays,
             LocalTime openTime,
             LocalTime breakStart,
