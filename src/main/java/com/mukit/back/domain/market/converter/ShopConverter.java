@@ -27,7 +27,7 @@ public class ShopConverter {
                 .build();
     }
 
-    public static Shop toShop(ShopRequestDTO.CreateShop dto, Market market) {
+    public static Shop toShop(ShopRequestDTO.CreateShop dto, Market market, String imageUrl) {
         return Shop.builder()
                 .market(market)
                 .name(dto.name())
@@ -42,7 +42,7 @@ public class ShopConverter {
                 .xPos(dto.xPos())
                 .yPos(dto.yPos())
                 .category(dto.category())
-                .imageUrl(dto.imageUrl())
+                .imageUrl(imageUrl)
                 .phone(dto.phone())
                 .note(dto.note())
                 .build();

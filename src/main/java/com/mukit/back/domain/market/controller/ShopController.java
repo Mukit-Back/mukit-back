@@ -5,9 +5,14 @@ import com.mukit.back.domain.market.dto.response.ShopResponseDTO;
 import com.mukit.back.domain.market.service.ShopService;
 import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,10 +25,12 @@ public class ShopController {
     private final ShopService shopService;
 
     @Operation(summary = "가게 정보 추가")
-    @PostMapping
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public CustomResponse<ShopResponseDTO.CreateShop> createShop(
-            @RequestBody ShopRequestDTO.CreateShop shopRequestDTO) {
-        return CustomResponse.onSuccess(shopService.createShop(shopRequestDTO));
+            @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @RequestPart("request") @Valid ShopRequestDTO.CreateShop createShopDTO,
+            @RequestPart(value = "shopImage", required = false) MultipartFile shopImage) {
+        return CustomResponse.onSuccess(shopService.createShop(createShopDTO, shopImage));
     }
 
     @Operation(summary = "가게 정보 수정")
