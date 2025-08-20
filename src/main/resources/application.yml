@@ -38,3 +38,13 @@ cloud:
       auto: false
     stack:
       auto: false
+
+server:
+  port: 8080
+kakao:
+  rest-key: ${KAKAO_REST_KEY}
+cors:
+  allowed-origins:
+    - http://localhost:3000
+    - http://127.0.0.1:3000
+    - http://localhost:8080
