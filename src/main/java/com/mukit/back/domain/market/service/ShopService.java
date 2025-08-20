@@ -9,9 +9,11 @@ import com.mukit.back.domain.market.entity.Shop;
 import com.mukit.back.global.apiPayload.code.ShopErrorCode;
 import com.mukit.back.global.apiPayload.exception.ShopException;
 import com.mukit.back.domain.market.repository.ShopRepository;
+import com.mukit.back.global.s3.AmazonS3Manager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class ShopService {
 
     private final ShopRepository shopRepository;
     private final MarketRepository marketRepository;
+    private final AmazonS3Manager amazonS3Manager;
 
     public ShopResponseDTO.ShopDetail getShopDetail(Long shopId) {
         Shop shop = shopRepository.findById(shopId)
@@ -52,11 +55,17 @@ public class ShopService {
     }
 
     @Transactional
-    public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO) {
+    public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO, MultipartFile shopImage) {
         Market market = marketRepository.findById(shopRequestDTO.marketId())
                 .orElseThrow(() -> new ShopException(ShopErrorCode.MARKET_NOT_FOUND));
 
-        Shop shop = ShopConverter.toShop(shopRequestDTO, market);
+
+        String shopImageUrl = null;
+        if (shopImage != null) {
+            shopImageUrl = amazonS3Manager.uploadShopImage(shopImage);
+        }
+
+        Shop shop = ShopConverter.toShop(shopRequestDTO, market, shopImageUrl);
         shopRepository.save(shop);
 
         return ShopConverter.toCreateShopResponse(shop);
