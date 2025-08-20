@@ -7,10 +7,7 @@ import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,5 +28,11 @@ public class CourseController {
             @RequestBody CourseRequestDTO.Survey survey
     ) {
         return CustomResponse.onSuccess(courseService.recommendCourse(survey));
+    }
+
+    @Operation(summary = "각 시장별 랜덤 코스 추천")
+    @GetMapping("/random")
+    public CustomResponse<CourseResponseDTO.CourseResultDTO> createRandomCourse() {
+        return CustomResponse.onSuccess(courseService.recommendRandomCoursePerMarket());
     }
 }
