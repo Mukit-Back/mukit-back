@@ -10,7 +10,7 @@ on:
 env:
   DOCKER_IMAGE_NAME: developerjamey/mukit_image
   EC2_HOST: ${{ secrets.EC2_URL }}
-  EC2_SSH_USER: ubuntu
+  EC2_SSH_USER: ec2-user
   PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
   CONTAINER_NAME: mukit_container
 
