@@ -88,6 +88,13 @@ public class MenuController {
         return CustomResponse.onSuccess("삭제 성공");
     }
 
+    @Operation(summary = "메뉴 정보 전부 삭제")
+    @DeleteMapping
+    public CustomResponse<String> deleteAllMenu() {
+        menuService.deleteAllMenu();
+        return CustomResponse.onSuccess("메뉴 정보 전부 삭제 완료");
+    }
+
     @Operation(summary = "가게 정보 리스트 조회")
     @GetMapping("/shops/{shopId}/menus")
     @ApiResponses(value = {
