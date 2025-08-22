@@ -61,6 +61,7 @@ public class CourseService {
             - 코스는 정확히 3개 생성: "코스"라는 단어를 포함한 짧은 한국어 제목으로 작명 (예: "한입 코스", "든든 코스").
             - 각 코스는 정확히 3곳의 가게로 구성.
             - 각 상점 항목은 다음 3개 필드만 포함: shopId, name, signatureMenu
+            - signatureMenu는 각 가게의 대표 메뉴 이름 하나를 문자열로만 출력할 것 (배열 아님!!)
             - 가능하면 각 코스에 category == "DESSERT" 상점을 최소 1개 포함
             - 출력은 **오직 JSON 하나**만. 마크다운 코드펜스(``` 등) 사용하지 말 것. 출력 JSON 루트에서 'course' 이외의 루트 키명(예: '코스', 'courseList') 절대 사용 금지.
             
