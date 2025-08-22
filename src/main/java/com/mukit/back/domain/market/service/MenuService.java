@@ -62,6 +62,10 @@ public class MenuService {
         menuRepository.delete(menu);
     }
 
+    public void deleteAllMenu() {
+        menuRepository.deleteAll();
+    }
+
     @Transactional(readOnly = true)
     public MenuResponseDTO.MenuList getMenus(Long shopId) {
         Shop shop = shopRepository.findById(shopId).orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));

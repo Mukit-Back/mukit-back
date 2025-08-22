@@ -55,6 +55,11 @@ public class ShopService {
     }
 
     @Transactional
+    public void deleteAllShop() {
+        shopRepository.deleteAll();
+    }
+
+    @Transactional
     public ShopResponseDTO.CreateShop createShop(ShopRequestDTO.CreateShop shopRequestDTO, MultipartFile shopImage) {
         Market market = marketRepository.findById(shopRequestDTO.marketId())
                 .orElseThrow(() -> new ShopException(ShopErrorCode.MARKET_NOT_FOUND));
