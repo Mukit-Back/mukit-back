@@ -72,7 +72,7 @@ public class MenuController {
         return CustomResponse.onSuccess(menuService.updateMenu(menuId, updateMenu, menuImage));
     }
 
-    @Operation(summary = "가게 정보 삭제")@ApiResponses(value = {
+    @Operation(summary = "메뉴 정보 삭제")@ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
             @ApiResponse(responseCode = "404",
                     description = """
@@ -89,13 +89,13 @@ public class MenuController {
     }
 
     @Operation(summary = "메뉴 정보 전부 삭제")
-    @DeleteMapping
+    @DeleteMapping("/menus")
     public CustomResponse<String> deleteAllMenu() {
         menuService.deleteAllMenu();
         return CustomResponse.onSuccess("메뉴 정보 전부 삭제 완료");
     }
 
-    @Operation(summary = "가게 정보 리스트 조회")
+    @Operation(summary = "메뉴 정보 가게 기반 리스트 조회")
     @GetMapping("/shops/{shopId}/menus")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
