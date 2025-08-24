@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/market")
+@RequestMapping("/api/markets")
 @RequiredArgsConstructor
 @Tag(name = "Market", description = "마켓")
 public class MarketController {
