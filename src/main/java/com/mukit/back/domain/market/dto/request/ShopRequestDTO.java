@@ -31,7 +31,6 @@ public class ShopRequestDTO {
             @Schema(example = "[\"SUNDAY\"]", description = "휴무일 리스트")
             List<String> holidays,
 
-            @NotNull
             @JsonFormat(pattern = "HH:mm[:ss]")
             @Schema(example = "09:00:00", description = "영업 시작 시간 (HH:mm 또는 HH:mm:ss)")
             LocalTime openTime,
@@ -44,7 +43,6 @@ public class ShopRequestDTO {
             @Schema(example = "16:00:00", description = "브레이크 타임 종료")
             LocalTime breakEnd,
 
-            @NotNull
             @JsonFormat(pattern = "HH:mm[:ss]")
             @Schema(example = "21:00:00", description = "영업 종료 시간")
             LocalTime closeTime,
