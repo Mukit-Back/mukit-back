@@ -7,9 +7,11 @@ import com.mukit.back.global.apiPayload.exception.CustomException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,44 @@ import java.util.Map;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<CustomResponse<String>> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        log.error("[ MethodArgumentTypeMismatchException ]: {}", ex.getMessage());
+
+        BaseErrorCode errorCode = GeneralErrorCode.BAD_REQUEST_400;
+
+        String message = String.format("요청 파라미터 '%s' 의 값 '%s' 를 %s 타입으로 변환할 수 없습니다.",
+                ex.getName(),
+                ex.getValue(),
+                ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "요구 타입");
+
+        CustomResponse<String> errorResponse = CustomResponse.onFailure(
+                errorCode.getCode(),
+                message,
+                null
+        );
+
+        return ResponseEntity
+                .status(errorCode.getHttpStatus())
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<CustomResponse<String>> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
+        log.error("[ HttpMessageNotReadableException ]: {}", ex.getMessage());
+
+        BaseErrorCode errorCode = GeneralErrorCode.BAD_REQUEST_400;
+        CustomResponse<String> errorResponse = CustomResponse.onFailure(
+                errorCode.getCode(),
+                "요청 본문(JSON) 형식이 올바르지 않습니다.",
+                null
+        );
+
+        return ResponseEntity
+                .status(errorCode.getHttpStatus())
+                .body(errorResponse);
+    }
 
     //애플리케이션에서 발생하는 커스텀 예외를 처리
     @ExceptionHandler(CustomException.class)

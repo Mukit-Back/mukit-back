@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/shops")
 @Tag(name = "Shop", description = "가게 API by 현빈")
+@Validated
 public class ShopController {
 
     private final ShopService shopService;
@@ -43,7 +45,7 @@ public class ShopController {
 
     @Operation(summary = "가게 정보 수정")
     @PatchMapping("/{shopId}")
-    public CustomResponse<String> updateShop(@PathVariable Long shopId, @RequestBody ShopRequestDTO.UpdateShop shopRequestDTO) {
+    public CustomResponse<String> updateShop(@PathVariable Long shopId, @RequestBody @Valid ShopRequestDTO.UpdateShop shopRequestDTO) {
         shopService.updateShop(shopId, shopRequestDTO);
         return CustomResponse.onSuccess("가게 정보 수정 완료");
     }

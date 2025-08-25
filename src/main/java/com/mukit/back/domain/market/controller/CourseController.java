@@ -6,13 +6,16 @@ import com.mukit.back.domain.market.service.CourseService;
 import com.mukit.back.global.apiPayload.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/courses")
 @Tag(name = "Course", description = "AI 코스 추천 API by 현빈")
+@Validated
 public class CourseController {
 
     private final CourseService courseService;
@@ -25,7 +28,7 @@ public class CourseController {
             """)
     @PostMapping
     public CustomResponse<CourseResponseDTO.CourseResultDTO> createCourse(
-            @RequestBody CourseRequestDTO.Survey survey
+            @RequestBody @Valid CourseRequestDTO.Survey survey
     ) {
         return CustomResponse.onSuccess(courseService.recommendCourse(survey));
     }
