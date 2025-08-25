@@ -72,29 +72,6 @@ public class MenuController {
         return CustomResponse.onSuccess(menuService.updateMenu(menuId, updateMenu, menuImage));
     }
 
-    @Operation(summary = "메뉴 정보 삭제")@ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "메뉴 생성 성공", useReturnTypeSchema = true),
-            @ApiResponse(responseCode = "404",
-                    description = """
-                            다음과 같은 이유로 실패할 수 있습니다:
-                            - 가게를 찾을 수 없습니다.
-                            """),
-    })
-    @DeleteMapping("/menus/{menuId}")
-    public CustomResponse<String> deleteMenu(
-            @PathVariable Long menuId
-    ) {
-        menuService.deleteMenu(menuId);
-        return CustomResponse.onSuccess("삭제 성공");
-    }
-
-    @Operation(summary = "메뉴 정보 전부 삭제")
-    @DeleteMapping("/menus")
-    public CustomResponse<String> deleteAllMenu() {
-        menuService.deleteAllMenu();
-        return CustomResponse.onSuccess("메뉴 정보 전부 삭제 완료");
-    }
-
     @Operation(summary = "메뉴 정보 가게 기반 리스트 조회")
     @GetMapping("/shops/{shopId}/menus")
     @ApiResponses(value = {

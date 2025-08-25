@@ -35,26 +35,11 @@ public class ShopController {
         return CustomResponse.onSuccess(shopService.createShop(createShopDTO, shopImage));
     }
 
-    @Operation(summary = "가게 정보 전부 삭제")
-    @DeleteMapping
-    public CustomResponse<String> deleteAllShop() {
-        shopService.deleteAllShop();
-        return CustomResponse.onSuccess("가게 정보 전부 삭제 완료");
-    }
-
-
     @Operation(summary = "가게 정보 수정")
     @PatchMapping("/{shopId}")
     public CustomResponse<String> updateShop(@PathVariable Long shopId, @RequestBody @Valid ShopRequestDTO.UpdateShop shopRequestDTO) {
         shopService.updateShop(shopId, shopRequestDTO);
         return CustomResponse.onSuccess("가게 정보 수정 완료");
-    }
-
-    @Operation(summary = "가게 정보 삭제")
-    @DeleteMapping("/{shopId}")
-    public CustomResponse<String> deleteShop(@PathVariable Long shopId) {
-        shopService.deleteShop(shopId);
-        return CustomResponse.onSuccess("가게 정보 삭제 완료");
     }
 
     @Operation(summary = "가게 정보 조회")

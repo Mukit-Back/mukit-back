@@ -56,16 +56,6 @@ public class MenuService {
         return MenuConverter.toUpdateMenuResponse(menu);
     }
 
-    public void deleteMenu(Long menuId) {
-        Menu menu = menuRepository.findById(menuId).orElseThrow(()-> new MenuException(ShopErrorCode.SHOP_NOT_FOUND));
-
-        menuRepository.delete(menu);
-    }
-
-    public void deleteAllMenu() {
-        menuRepository.deleteAll();
-    }
-
     @Transactional(readOnly = true)
     public MenuResponseDTO.MenuList getMenus(Long shopId) {
         Shop shop = shopRepository.findById(shopId).orElseThrow(() -> new ShopException(ShopErrorCode.SHOP_NOT_FOUND));
