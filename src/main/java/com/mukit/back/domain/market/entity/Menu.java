@@ -39,6 +39,7 @@ public class Menu extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private FullLevel fullLevel;
 
+    @Column(name = "menu_image_url", columnDefinition = "TEXT")
     private String menuImageUrl;
 
     private String note;
